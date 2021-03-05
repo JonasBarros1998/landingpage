@@ -7,4 +7,4 @@ const Title: StyledComponent<"h1", any, {}, never> = styled.h1`
 
 export default function Home() {
   return <Title>Minha Pagina</Title>
-}
+};
