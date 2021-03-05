@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const theme = {
+const theme: {colors: {primary: string}} = {
   colors: {
     primary: '#0070f3',
   },
