@@ -1,10 +1,12 @@
-import styled, { StyledComponent } from 'styled-components'
-
-const Title: StyledComponent<"h1", any, {}, never> = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+import GlobalStyle from '../components/GlobalStyle';
+import Banner from '../components/banner/Banner';
 
 export default function Home() {
-  return <Title>Minha Pagina</Title>
+  return (
+    <>
+      <GlobalStyle />
+      <Banner />
+      <h2>Olá</h2>
+    </>
+  )
 };
