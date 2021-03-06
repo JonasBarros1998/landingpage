@@ -1,5 +1,5 @@
 import GlobalStyle from '../components/GlobalStyle';
-import Banner from '../components/banner/Banner.jsx';
+import Banner from '../components/banner/Banner';
 import MainMenu from '../components/main-menu/MainMenu'
 
 export default function Home() {

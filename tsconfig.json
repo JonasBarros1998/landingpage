@@ -68,7 +68,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/banner/Banner.jsx"  ],
+, "components/banner/Banner.tsx"  ],
   "exclude": [
     "node_modules"
   ]
