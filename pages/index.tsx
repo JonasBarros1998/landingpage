@@ -1,6 +1,7 @@
 import GlobalStyle from '../components/GlobalStyle';
 import Banner from '../components/banner/Banner';
 import MainMenu from '../components/main-menu/MainMenu'
+import About from '../components/about/About';
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <GlobalStyle />
       <MainMenu />
       <Banner />
-      <h2>Olá</h2>
+      <About />
     </>
   )
 };
