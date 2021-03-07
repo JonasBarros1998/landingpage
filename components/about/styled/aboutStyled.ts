@@ -4,19 +4,15 @@ const Title = styled.div`
   font-family: 'roboto';
   font-weight: 500;
   font-size: 25px;
-  margin: 40px 0 0 0;
+  margin: 40px 0 20px 0;
 `;
 
-const Description = styled.div`
-  font-family: 'roboto';
-  
-`;
-
-const SubTitle = styled.div`
+const Describe = styled.div`
   font-family: 'roboto';
   font-weight: 300;
-  font-size: 20px;
+  font-size: 15px;
   margin: 10px 0 0 0;
 `;
 
-export {Title, SubTitle, Description}; 
+
+export {Title, Describe}; 
