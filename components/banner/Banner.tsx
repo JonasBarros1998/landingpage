@@ -6,7 +6,6 @@ function Banner() {
   return (
     <Grid container>
       <Grid item xs={12}>
-
         <BannerStyled>
           <Grid container justify="center">
             <Grid item xs={10}>
@@ -22,7 +21,6 @@ function Banner() {
             </Grid>
           </Grid>
         </BannerStyled>
-
       </Grid>
     </Grid>
   )
