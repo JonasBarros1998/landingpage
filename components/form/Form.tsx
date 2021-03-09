@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import Box from '@material-ui/core/Box';
+import {Padding} from '../global/Spacing';
 
 import MaskedInput from 'react-text-mask';
 
@@ -57,7 +57,7 @@ function Form() {
             justify="center"
             alignItems="center">
             <Grid item xs={12} sm={12} md={12} lg={8} xl={12}>
-              <Box mt={4}>
+              <Padding padding={"20px 0 0 0"}>
                 <FormControl fullWidth>
                   <InputLabel>Nome completo</InputLabel>
                   <Input
@@ -67,9 +67,9 @@ function Form() {
                     fullWidth
                     required />
                 </FormControl>
-              </Box>
+              </Padding>
 
-              <Box mt={4}>
+              <Padding padding={"20px 0 0 0"}>
                 <FormControl fullWidth>
                   <InputLabel>e-mail</InputLabel>
                   <Input
@@ -78,9 +78,9 @@ function Form() {
                     name="email"
                     required />
                 </FormControl>
-              </Box>
+              </Padding>
 
-              <Box mt={4}>
+              <Padding padding={"35px 0 0 0"}>
                 <FormControl fullWidth>
                   <InputLabel htmlFor="phone-number">telefone/whatsapp</InputLabel>
                   <Input
@@ -91,18 +91,18 @@ function Form() {
                     inputComponent={TextMaskCustom as any}
                     required />
                 </FormControl>
-              </Box>
+              </Padding>
 
-              <Box mt={4}>
+              <Padding padding={"40px 0 0 0"}>
                 <FormControl fullWidth>
                   <TextareaAutosize
                     placeholder="Descreva qual é o principal objetivo do chatbot"
                     aria-label="Descreva qual é o principal objetivo do chatbot"
-                    rowsMax={12}
-                    rowsMin={3}
+                    rowsMax={20}
+                    rowsMin={10}
                     required />
                 </FormControl>
-              </Box>
+              </Padding>
 
             </Grid>
           </Grid>
