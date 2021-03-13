@@ -4,7 +4,7 @@ import {cyan} from '@material-ui/core/colors';
 import Fab from '@material-ui/core/Fab';
 //import Button from '@material-ui/core/Button'
 
-const ColorButton = withStyles((theme: Theme) => ({
+const ButtonForm = withStyles((theme: Theme) => ({
   root: {
     color: theme.palette.getContrastText(cyan[500]),
     backgroundColor: cyan[500],
@@ -51,4 +51,4 @@ const Content = styled.div`
   padding: 50px 0 0 20px;
 `;
 
-export {BannerStyled, SubTitle, Title, ColorButton, Content, Description};
+export {BannerStyled, SubTitle, Title, ButtonForm, Content, Description};

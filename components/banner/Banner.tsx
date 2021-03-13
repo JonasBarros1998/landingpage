@@ -1,5 +1,5 @@
 import React from 'react';
-import { BannerStyled, SubTitle, Title, ColorButton, Content, Description } from './styled/BannerStyled';
+import { BannerStyled, SubTitle, Title, ButtonForm, Content, Description } from './styled/BannerStyled';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
@@ -17,7 +17,7 @@ function Banner() {
                   consectetur adipiscing elit. Mauris molestie 
                   tincidunt elit, ut elementum dolor laoreet iaculis. 
                   Suspendisse finibus congue massa tempor consequat</Description>
-                <Button variant="outlined" color="primary">Solicite Agora</Button>
+                <ButtonForm size="medium" variant="extended">Solicite Agora</ButtonForm>
               </Content>
             </Grid>
           </Grid>
