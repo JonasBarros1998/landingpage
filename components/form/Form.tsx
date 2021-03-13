@@ -34,16 +34,22 @@ function TextMaskCustom(props: TextMaskCustomProps) {
 }
 
 function Form() {
-  const [values, setValues] = useState<State>({
-    textmask: '( )     -    ',
-  });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
+  const [fullName, setFullName] = useState<State>(""); 
+
+  const inputChanged = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputValue = {...fullName};
+    inputValue[event.target.name] = event.target.value;
+    setFullName({
+      ...fullName,
       [event.target.name]: event.target.value,
     });
-  };
+  }
+
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(fullName)
+  }
 
   return (
     <Grid container
@@ -58,9 +64,7 @@ function Form() {
             justify="center"
             alignItems="center">
             <Grid item xs={12} sm={12} md={12} lg={8} xl={12}>
-              <form>
-
-
+              <form onSubmit={submit}>
                 <Padding padding={"20px 0 0 0"}>
                   <FormControl fullWidth>
                     <InputLabel>Nome completo</InputLabel>
@@ -69,6 +73,7 @@ function Form() {
                       type="text"
                       name="fullName"
                       fullWidth
+                      onChange={inputChanged}
                       required />
                   </FormControl>
                 </Padding>
@@ -80,6 +85,7 @@ function Form() {
                       id="email"
                       type="email"
                       name="email"
+                      onChange={inputChanged}
                       required />
                   </FormControl>
                 </Padding>
@@ -89,9 +95,8 @@ function Form() {
                     <InputLabel htmlFor="phone-number">telefone/whatsapp</InputLabel>
                     <Input
                       id="phone-number"
-                      value={values.textmask}
-                      onChange={handleChange}
-                      name="textmask"
+                      onChange={inputChanged}
+                      name="phone"
                       inputComponent={TextMaskCustom as any}
                       required />
                   </FormControl>
@@ -100,10 +105,12 @@ function Form() {
                 <Padding padding={"40px 0 0 0"}>
                   <FormControl fullWidth>
                     <TextareaAutosize
+                      name="describe"
                       placeholder="Descreva qual é o principal objetivo do chatbot"
                       aria-label="Descreva qual é o principal objetivo do chatbot"
                       rowsMax={20}
                       rowsMin={10}
+                      onChange={inputChanged}
                       required />
                   </FormControl>
                 </Padding>
