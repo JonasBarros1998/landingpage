@@ -35,10 +35,10 @@ function TextMaskCustom(props: TextMaskCustomProps) {
 
 function Form() {
 
-  const [fullName, setFullName] = useState<State>(""); 
+  const [fullName, setFullName] = useState<State>("");
 
   const inputChanged = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = {...fullName};
+    const inputValue = { ...fullName };
     inputValue[event.target.name] = event.target.value;
     setFullName({
       ...fullName,
@@ -63,7 +63,13 @@ function Form() {
             direction="row"
             justify="center"
             alignItems="center">
-            <Grid item xs={12} sm={12} md={12} lg={8} xl={12}>
+            <Grid 
+              item 
+              xs={11} 
+              sm={10} 
+              md={8} 
+              lg={8} 
+              xl={8}>
               <form onSubmit={submit}>
                 <Padding padding={"20px 0 0 0"}>
                   <FormControl fullWidth>
@@ -115,13 +121,28 @@ function Form() {
                   </FormControl>
                 </Padding>
 
+
                 <Padding padding={"35px 0 0 0 "}>
-                  <Button 
-                  type="submit" 
-                  fullWidth 
-                  color="primary"
-                  variant="contained">
-                    Enviar</Button>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center">
+                    <Grid 
+                      item 
+                      xs={8} 
+                      sm={8} 
+                      md={8} 
+                      lg={8} 
+                      xl={8}>
+                      <Button
+                        type="submit"
+                        fullWidth
+                        color="primary"
+                        variant="contained">
+                        Enviar</Button>
+                    </Grid>
+                  </Grid>
                 </Padding>
               </form>
             </Grid>

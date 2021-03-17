@@ -17,7 +17,7 @@ function Banner() {
                   consectetur adipiscing elit. Mauris molestie 
                   tincidunt elit, ut elementum dolor laoreet iaculis. 
                   Suspendisse finibus congue massa tempor consequat</Description>
-                <ButtonForm size="medium" variant="extended">Solicite Agora</ButtonForm>
+                <Button size="medium">Solicite Agora</Button>
               </Content>
             </Grid>
           </Grid>

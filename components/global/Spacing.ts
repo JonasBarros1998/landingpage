@@ -5,4 +5,9 @@ const Padding = styled.div`
   padding: ${(props: {padding: string}) => props.padding};
 `;
 
-export {Padding};
+
+const Margin = styled.div`
+  margin: ${(props: {margin: string}) => props.margin};
+`;
+
+export {Padding, Margin};
