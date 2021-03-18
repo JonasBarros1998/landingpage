@@ -1,10 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import { Title, Describe } from './styled/aboutStyled';
-import { Margin, Padding } from '../global/Spacing';
-
+import { Margin } from '../global/Spacing';
 
 function About() {
   return (
@@ -14,21 +12,16 @@ function About() {
         alignItems="center">
         <Grid item xs={8}>
           <Title>
-            <h4>Lorem ipsum dolor sit amet</h4>
+            <h4>Veja mais benefícios</h4>
           </Title>
           <Describe>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Suspendisse ipsum velit, viverra in feugiat non,
-            commodo et velit. Nunc porta feugiat eros eget tempor.
-            Fusce sed arcu et turpis venenatis ornare. Curabitur
-            sodales, dolor id eleifend condimentum, felis nulla dignissim
-            augue, et luctus lacus leo et dui.
-            Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse ipsum velit, viverra in feugiat non,
-            commodo et velit. Nunc porta feugiat eros eget tempor.
-            Fusce sed arcu et turpis venenatis ornare. Curabitur sodales,
-            dolor id eleifend condimentum, felis nulla dignissim augue,
-            et luctus lacus leo et dui.
+            Deixe que o chatbot responda as dúvidas, mais comuns entre seus clientes,
+            por exemplo, informações sobre um determinado produto, horário de funcionamento,
+            pagamentos, entrega de mercadoria, etc...
+            Você poderá integrar com diversos sistemas por exemplo crm, erp,
+            sistema de gerenciamento de estoque, ou de envio de mercadorias.
+            Elimine o problema de espera durante o atendimento do seu cliente,
+            porque o chatbot poderá atender várias pessoas ao mesmo tempo.
           </Describe>
         </Grid>
       </Grid>
@@ -38,7 +31,7 @@ function About() {
         alignItems="center">
         <Grid item xs={11} sm={7} md={4} lg={3} xl={3}>
           <Title>
-            <h4>Lorem ipsum dolor sit amet</h4>
+            <h4>Veja esses 3 incríveis casos de uso</h4>
           </Title>
         </Grid>
       </Grid>
@@ -53,7 +46,7 @@ function About() {
           md={3}
           lg={3}
           xl={3}>
-          <Margin margin={"1em 0 0 0"}>
+          <Margin margin={"1em 0.5em 0 0"}>
             <Grid
               container
               direction="row"
@@ -67,9 +60,9 @@ function About() {
                   height={50} />
               </Grid>
               <Grid item xs={9}>
-                Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Nunc consequat imperdiet
-                pellentesque
+                Poderá treina-lo para que esclareça as
+                dúvidas de seus clientes, por exemplo,
+                prazo de entrega de alguma mercadoria.
               </Grid>
             </Grid>
           </Margin>
@@ -81,7 +74,7 @@ function About() {
           md={3}
           lg={3}
           xl={3}>
-          <Margin margin={"1em 0 0 0"}>
+          <Margin margin={"1em 0.5em 0 0"}>
             <Grid
               container
               direction="row"
@@ -95,9 +88,9 @@ function About() {
                   height={50} />
               </Grid>
               <Grid item xs={9}>
-                Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Nunc consequat imperdiet
-                pellentesque
+                Deixe que o chatbot responda seus cliente,
+                e os outros colaboradores faça aquilo que é
+                realmente importante para a empresa.
             </Grid>
             </Grid>
           </Margin>
@@ -123,9 +116,9 @@ function About() {
                   height={50} />
               </Grid>
               <Grid item xs={9}>
-                Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Nunc consequat imperdiet
-                pellentesque
+                Poderá se comunicar com os seus clientes,
+                e gerar insights sobre aqueles clientes com maiores
+                possibilidades de comprar algum produto.
             </Grid>
             </Grid>
           </Margin>

@@ -11,13 +11,22 @@ function Banner() {
           <Grid container justify="center">
             <Grid item xs={10}>
               <Content>
-                <Title>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Title>
-                <SubTitle>Lorem ipsum dolor sit</SubTitle>
-                <Description>Lorem ipsum dolor sit amet, 
-                  consectetur adipiscing elit. Mauris molestie 
-                  tincidunt elit, ut elementum dolor laoreet iaculis. 
-                  Suspendisse finibus congue massa tempor consequat</Description>
-                <Button size="medium">Solicite Agora</Button>
+                <Title>O que um chatbot poderá ajudar seu empreendimento? </Title>
+                <SubTitle>Qual plataforma utilizamos? </SubTitle>
+                <Grid container>
+                  <Grid item 
+                    xs={11} 
+                    sm={10} 
+                    md={8} 
+                    lg={8} 
+                    xl={8}>
+                    <Description>Utilizamos o dialogflow porque não foi desenvolvido utilizando uma
+                      árvore de decisões, pelo contrário ele utiliza inteligência artificial
+                      para interpretar o que o seu cliente escreve.
+                      </Description>
+                    <Button size="medium">Solicite Agora</Button>
+                  </Grid>
+                </Grid>
               </Content>
             </Grid>
           </Grid>
