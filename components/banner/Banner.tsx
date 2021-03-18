@@ -24,7 +24,12 @@ function Banner() {
                       árvore de decisões, pelo contrário ele utiliza inteligência artificial
                       para interpretar o que o seu cliente escreve.
                       </Description>
-                    <Button size="medium">Solicite Agora</Button>
+                    <Button 
+                    variant="contained"
+                    size="medium" 
+                    disableElevation={true}
+                    disableFocusRipple={true}
+                    color="default">Solicite Agora</Button>
                   </Grid>
                 </Grid>
               </Content>
