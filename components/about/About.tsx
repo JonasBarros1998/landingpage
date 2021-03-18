@@ -15,7 +15,7 @@ function About() {
             <h4>Veja mais benefícios</h4>
           </Title>
           <Describe>
-            Deixe que o chatbot responda as dúvidas, mais comuns entre seus clientes,
+            Deixe que o chatbot responda as dúvidas mais comuns entre seus clientes,
             por exemplo, informações sobre um determinado produto, horário de funcionamento,
             pagamentos, entrega de mercadoria, etc...
             Você poderá integrar com diversos sistemas por exemplo crm, erp,
@@ -60,7 +60,7 @@ function About() {
                   height={50} />
               </Grid>
               <Grid item xs={9}>
-                Poderá treina-lo para que esclareça as
+                Poderá treiná-lo para que esclareça as
                 dúvidas de seus clientes, por exemplo,
                 prazo de entrega de alguma mercadoria.
               </Grid>
