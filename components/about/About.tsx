@@ -29,7 +29,7 @@ function About() {
       <Grid container
         justify="center"
         alignItems="center">
-        <Grid item xs={11} sm={7} md={4} lg={3} xl={3}>
+        <Grid item xs={11} sm={8} md={5} lg={4} xl={4}>
           <Title>
             <h4>Veja esses 3 incríveis casos de uso</h4>
           </Title>

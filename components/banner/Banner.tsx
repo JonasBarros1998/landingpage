@@ -1,5 +1,5 @@
 import React from 'react';
-import { BannerStyled, SubTitle, Title, ButtonForm, Content, Description } from './styled/BannerStyled';
+import { BannerStyled, SubTitle, Title, Content, Description } from './styled/BannerStyled';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
