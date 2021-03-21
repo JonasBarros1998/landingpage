@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +12,8 @@ import { Padding } from '../global/Spacing';
 import MaskedInput from 'react-text-mask';
 
 import { BoxFormulario } from './styled/form';
+import { eventOnClick } from '../../events/click/onclick'; 
+import { join } from 'node:path';
 
 interface TextMaskCustomProps {
   inputRef: (ref: HTMLInputElement | null) => void;
@@ -35,20 +37,64 @@ function TextMaskCustom(props: TextMaskCustomProps) {
 
 function Form() {
 
-  const [fullName, setFullName] = useState<State>("");
+  const [form, setForm] = useState<State>({
+    fullname: "",
+    email: "",
+    phone: "",
+    describe: ""
+  });
+
+  const [disable, setDisabled] = useState<State>(false);
+
+  useEffect(() => {
+    setDisabled(false);
+  }, []);
 
   const inputChanged = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = { ...fullName };
+    const inputValue = { ...form };
     inputValue[event.target.name] = event.target.value;
-    setFullName({
-      ...fullName,
+    setForm({
+      ...form,
       [event.target.name]: event.target.value,
     });
   }
 
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(fullName)
+    desabilitarBotao(true);
+    const body: any = {
+      "queryResult": {
+        "queryText": `nome: ${form.fullName} email: ${form.email}
+        phone: ${form.phone} descricao: ${form.describe}`
+      }
+    };
+
+    const header: HeadersInit = new Headers();
+    header.append('Content-Type', 'application/json');
+    const datas = await eventOnClick({
+      endpoint: 'http://localhost:8080/send',
+      verb: 'POST',
+      body: body,
+      headers: header
+    });
+    if(datas.status){
+      alert("em instantes entraremos em contato, Muito Obrigado");
+      limparFormulario();
+      desabilitarBotao(false);
+    }
+  }
+
+  function limparFormulario(){
+    setForm({
+      fullname: "",
+      email: "",
+      phone: `(${/\d/} ${/\d/})${/\d/}${/\d/}${/\d/}${/\d/}${/\d/}-${/\d/}${/\d/}${/\d/}`,
+      describe: ""
+    });
+  }
+
+  function desabilitarBotao(status: boolean){
+    setDisabled(status)
   }
 
   return (
@@ -77,9 +123,10 @@ function Form() {
                     <Input
                       id="full-name"
                       type="text"
-                      name="fullName"
+                      name="fullname"
                       fullWidth
                       onChange={inputChanged}
+                      value={form.fullname}
                       required />
                   </FormControl>
                 </Padding>
@@ -92,6 +139,7 @@ function Form() {
                       type="email"
                       name="email"
                       onChange={inputChanged}
+                      value={form.email}
                       required />
                   </FormControl>
                 </Padding>
@@ -104,6 +152,7 @@ function Form() {
                       onChange={inputChanged}
                       name="phone"
                       inputComponent={TextMaskCustom as any}
+                      value={form.phone}
                       required />
                   </FormControl>
                 </Padding>
@@ -117,6 +166,7 @@ function Form() {
                       rowsMax={20}
                       rowsMin={10}
                       onChange={inputChanged}
+                      value={form.describe}
                       required />
                   </FormControl>
                 </Padding>
@@ -139,7 +189,8 @@ function Form() {
                         type="submit"
                         fullWidth
                         color="primary"
-                        variant="contained">
+                        variant="contained"
+                        disabled={disable}>
                         Enviar</Button>
                     </Grid>
                   </Grid>
