@@ -13,7 +13,6 @@ import MaskedInput from 'react-text-mask';
 
 import { BoxFormulario } from './styled/form';
 import { eventOnClick } from '../../events/click/onclick'; 
-import { join } from 'node:path';
 
 interface TextMaskCustomProps {
   inputRef: (ref: HTMLInputElement | null) => void;
@@ -37,21 +36,21 @@ function TextMaskCustom(props: TextMaskCustomProps) {
 
 function Form() {
 
-  const [form, setForm] = useState<State>({
+  const [form, setForm] = useState<object | any>({
     fullname: "",
     email: "",
     phone: "",
     describe: ""
   });
 
-  const [disable, setDisabled] = useState<State>(false);
+  const [disable, setDisabled] = useState<boolean | any>(false);
 
   useEffect(() => {
     setDisabled(false);
   }, []);
 
   const inputChanged = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = { ...form };
+    const inputValue =  {...form};
     inputValue[event.target.name] = event.target.value;
     setForm({
       ...form,
@@ -64,7 +63,7 @@ function Form() {
     desabilitarBotao(true);
     const body: any = {
       "queryResult": {
-        "queryText": `nome: ${form.fullName} email: ${form.email}
+        "queryText": `nome: ${form.fullname} email: ${form.email}
         phone: ${form.phone} descricao: ${form.describe}`
       }
     };
@@ -72,16 +71,18 @@ function Form() {
     const header: HeadersInit = new Headers();
     header.append('Content-Type', 'application/json');
     const datas = await eventOnClick({
-      endpoint: 'http://localhost:8080/send',
+      endpoint: 'https://dialogflow-sheets-cbfpwy4e3a-uc.a.run.app/send',
       verb: 'POST',
       body: body,
       headers: header
     });
+
     if(datas.status){
       alert("em instantes entraremos em contato, Muito Obrigado");
       limparFormulario();
       desabilitarBotao(false);
     }
+    desabilitarBotao(false);
   }
 
   function limparFormulario(){
