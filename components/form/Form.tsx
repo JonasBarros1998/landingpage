@@ -12,7 +12,7 @@ import { Padding } from '../global/Spacing';
 import MaskedInput from 'react-text-mask';
 
 import { BoxFormulario } from './styled/form';
-import { eventOnClick } from '../../events/click/onclick'; 
+import { eventClickAddClient } from './events/click/client';
 
 interface TextMaskCustomProps {
   inputRef: (ref: HTMLInputElement | null) => void;
@@ -37,10 +37,10 @@ function TextMaskCustom(props: TextMaskCustomProps) {
 function Form() {
 
   const [form, setForm] = useState<object | any>({
-    fullname: "",
+    name: "",
     email: "",
     phone: "",
-    describe: ""
+    description: ""
   });
 
   const [disable, setDisabled] = useState<boolean | any>(false);
@@ -50,7 +50,7 @@ function Form() {
   }, []);
 
   const inputChanged = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue =  {...form};
+    const inputValue = { ...form };
     inputValue[event.target.name] = event.target.value;
     setForm({
       ...form,
@@ -61,40 +61,28 @@ function Form() {
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     desabilitarBotao(true);
-    const body: any = {
-      "queryResult": {
-        "queryText": `nome: ${form.fullname} email: ${form.email}
-        phone: ${form.phone} descricao: ${form.describe}`
-      }
-    };
-
-    const header: HeadersInit = new Headers();
-    header.append('Content-Type', 'application/json');
-    const datas = await eventOnClick({
-      endpoint: 'https://dialogflow-sheets-cbfpwy4e3a-uc.a.run.app/send',
-      verb: 'POST',
-      body: body,
-      headers: header
-    });
-
-    if(datas.status){
-      alert("em instantes entraremos em contato, Muito Obrigado");
+    const response = await eventClickAddClient(form);
+    if (response.status === 201) {
+      alert("em instantes entraremos em contato, Muito Obrigado!");
       limparFormulario();
       desabilitarBotao(false);
+      return;
     }
+    alert("Não foi possível concluir sua solicitação, por favor tente novamente mais tarde!");
+    limparFormulario();
     desabilitarBotao(false);
   }
 
-  function limparFormulario(){
+  function limparFormulario() {
     setForm({
-      fullname: "",
+      name: "",
       email: "",
       phone: `(${/\d/} ${/\d/})${/\d/}${/\d/}${/\d/}${/\d/}${/\d/}-${/\d/}${/\d/}${/\d/}`,
-      describe: ""
+      description: ""
     });
   }
 
-  function desabilitarBotao(status: boolean){
+  function desabilitarBotao(status: boolean) {
     setDisabled(status)
   }
 
@@ -110,12 +98,12 @@ function Form() {
             direction="row"
             justify="center"
             alignItems="center">
-            <Grid 
-              item 
-              xs={11} 
-              sm={10} 
-              md={8} 
-              lg={8} 
+            <Grid
+              item
+              xs={11}
+              sm={10}
+              md={8}
+              lg={8}
               xl={8}>
               <form onSubmit={submit}>
                 <Padding padding={"20px 0 0 0"}>
@@ -124,11 +112,11 @@ function Form() {
                     <Input
                       id="full-name"
                       type="text"
-                      name="fullname"
+                      name="name"
                       fullWidth
                       onChange={inputChanged}
-                      value={form.fullname}
-                      required />
+                      value={form.name}
+                      />
                   </FormControl>
                 </Padding>
 
@@ -141,7 +129,7 @@ function Form() {
                       name="email"
                       onChange={inputChanged}
                       value={form.email}
-                      required />
+                      />
                   </FormControl>
                 </Padding>
 
@@ -154,21 +142,21 @@ function Form() {
                       name="phone"
                       inputComponent={TextMaskCustom as any}
                       value={form.phone}
-                      required />
+                      />
                   </FormControl>
                 </Padding>
 
                 <Padding padding={"40px 0 0 0"}>
                   <FormControl fullWidth>
                     <TextareaAutosize
-                      name="describe"
+                      name="description"
                       placeholder="Descreva qual é o principal objetivo do chatbot"
                       aria-label="Descreva qual é o principal objetivo do chatbot"
                       rowsMax={20}
                       rowsMin={10}
                       onChange={inputChanged}
-                      value={form.describe}
-                      required />
+                      value={form.description}
+                      />
                   </FormControl>
                 </Padding>
 
@@ -179,12 +167,12 @@ function Form() {
                     direction="row"
                     justify="center"
                     alignItems="center">
-                    <Grid 
-                      item 
-                      xs={8} 
-                      sm={8} 
-                      md={8} 
-                      lg={8} 
+                    <Grid
+                      item
+                      xs={8}
+                      sm={8}
+                      md={8}
+                      lg={8}
                       xl={8}>
                       <Button
                         type="submit"
